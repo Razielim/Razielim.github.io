@@ -1,0 +1,47 @@
+#app {
+    margin-top: 0px;
+    margin-left: 0px;
+    background-color:lightgray;
+    min-width: auto;
+    min-height: auto;
+}
+
+#top_pane {
+    width: 960px;
+    height: 50px;
+    background-image: url("assets/topbar.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+#center_pane {
+    width: 960px;
+    height: 540px;
+    background-image: url("assets/bg.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+#bottom_pane {
+    width: 960px;
+    height: 21px;
+    background-image: url("assets/footer.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+#center_pane_education_tabs{
+    height: 100%;
+    width: 26px;
+}
+
+#center_pane_education_left {
+    height: 100%;
+    width: 765px;
+}
+
+#center_pane_education_right {
+    height: 100%;
+    width: 169px;
+}
+

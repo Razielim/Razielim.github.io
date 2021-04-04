@@ -1,45 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="stylesheet" href="index.css">
         <meta charset="UTF-8">
         <script src="vue.min.js"></script>
         <script defer src="vue_init.js"></script>
         <script defer src="main.js"></script>
     </head>
+
+
     <body onload="load_game()">
         <div id="app">
-            <p>{{ game.screen }}</p>
             <div id="game_container">
                 <div id="top_pane">
                     <!--information pane and screen select-->
                     Top
+                    <p>{{ game.screen }}</p>
                 </div>
-                <div v-if="game.screen == 'education'" id="screen_education">
-                    <div id="center_pane_education">
-                        <table>
-                            <td id="center_pane_education_left">
-                                <!--education screen left side (upgrades)-->
-                                Left Center
-                            </td>
-                            <td id="center_pane_education_left">
-                                <!--education screen right side (resource overview)-->
-                                Right Center
-                            </td>
-                        </table>
+                <div id="center_pane">
+                    <div v-if="game.topscreen == screens.EDUCATION" id="screen_education">
+                        <div id="center_pane_education">
+                            <table>
+                                <td id="center_pane_education_tabs">
+                                    tabs <!--there are two tab graphics stacked vertically here-->
+                                </td>
+                                <td id="center_pane_education_left">
+                                    <!--education screen left side (upgrades)-->
+                                    <div v-if="game.subscreen == screens.EDUCATION.ACTIONS" id="screen_education_actions">
+                                        <table>
+                                            <test_item  v-for="action in game.education_actions"        
+                                                        v-bind:actions = "action" v-bind:key = "action.id"></test_item>   <!--pass on variables of the game object into this component template-->
+                                        </table>
+                                    </div>
+                                </td>
+                                <td id="center_pane_education_right">
+                                    <!--education screen right side (resource overview)-->
+                                    Right Center
+                                </td>
+                            </table>
+                        </div>
                     </div>
-                </div>
-                <div v-if="game.screen == 'adventure'" id="screen_adventure">
-                    <div id="center_pane_adventure">
-                        <table>
-                            <td id="center_pane_adventure_left">
-                                <!--adventure screen left side (upgrades)-->
-                                Left Center
-                            </td>
-                            <td id="center_pane_adventure_left">
-                                <!--adventure screen right side (resource overview)-->
-                                Right Center
-                            </td>
-                        </table>
+                    <div v-if="game.screen == screens.ADVENTURE" id="screen_adventure">
+                        <div id="center_pane_adventure">
+                            <table>
+                                <td id="center_pane_adventure_left">
+                                    <!--adventure screen left side (upgrades)-->
+                                    Left Center
+                                </td>
+                                <td id="center_pane_adventure_left">
+                                    <!--adventure screen right side (resource overview)-->
+                                    Right Center
+                                </td>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <div id="bottom_pane">
