@@ -1,10 +1,52 @@
-<html charset="UTF-8">
-
-<head>
-</head>
-
-<body>
-	<div> Hello World </div>
-</body>
-
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="vue.min.js"></script>
+        <script defer src="vue_init.js"></script>
+        <script defer src="main.js"></script>
+    </head>
+    <body onload="load_game()">
+        <div id="app">
+            <p>{{ game.screen }}</p>
+            <div id="game_container">
+                <div id="top_pane">
+                    <!--information pane and screen select-->
+                    Top
+                </div>
+                <div v-if="game.screen == 'education'" id="screen_education">
+                    <div id="center_pane_education">
+                        <table>
+                            <td id="center_pane_education_left">
+                                <!--education screen left side (upgrades)-->
+                                Left Center
+                            </td>
+                            <td id="center_pane_education_left">
+                                <!--education screen right side (resource overview)-->
+                                Right Center
+                            </td>
+                        </table>
+                    </div>
+                </div>
+                <div v-if="game.screen == 'adventure'" id="screen_adventure">
+                    <div id="center_pane_adventure">
+                        <table>
+                            <td id="center_pane_adventure_left">
+                                <!--adventure screen left side (upgrades)-->
+                                Left Center
+                            </td>
+                            <td id="center_pane_adventure_left">
+                                <!--adventure screen right side (resource overview)-->
+                                Right Center
+                            </td>
+                        </table>
+                    </div>
+                </div>
+                <div id="bottom_pane">
+                    <!--shop and links-->
+                    Bottom
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
