@@ -6,6 +6,8 @@
         <script src="vue.min.js"></script>
         <script defer src="vue_init.js"></script>
         <script defer src="main.js"></script>
+        <script defer src="education.js"></script>
+        <script defer src="adventure.js"></script>
     </head>
 
 
@@ -14,8 +16,7 @@
             <div id="game_container">
                 <div id="top_pane">
                     <!--information pane and screen select-->
-                    Top
-                    <p>{{ game.screen }}</p>
+                    <top_pane_holder id="top_pane_holder"></top_pane_holder>
                 </div>
                 <div id="center_pane">
                     <div v-if="game.topscreen == screens.EDUCATION" id="screen_education">
@@ -40,7 +41,7 @@
                             </table>
                         </div>
                     </div>
-                    <div v-if="game.screen == screens.ADVENTURE" id="screen_adventure">
+                    <div v-if="game.topscreen == screens.ADVENTURE" id="screen_adventure">
                         <div id="center_pane_adventure">
                             <table>
                                 <td id="center_pane_adventure_left">

@@ -30,6 +30,14 @@
     background-size: auto;
 }
 
+#top_pane_holder {
+    padding-top: 2px;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    line-height: 22px;
+}
+
 #center_pane_education_tabs{
     height: 100%;
     width: 26px;

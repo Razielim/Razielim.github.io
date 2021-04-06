@@ -17,7 +17,10 @@ function define_adventure_components()
 
 function define_misc_components()
 {
-
+    Vue.component('top_pane_holder', {
+        template: `<div><div>Stage 1: Educate yourself!</div> <div>Clear Reward: First Career Choice</div>
+                </div>`
+    })
 }
 
 
