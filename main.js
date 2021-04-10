@@ -1,8 +1,8 @@
 var game;
 
-const curVersion = "0.1";
-
-const screens = {
+var tickrate = 30.0;
+var curVersion = "0.1";
+var screens = {
     EDUCATION: {
         ACTIONS: "actions",
         UPGRADES: "upgrades"
@@ -10,11 +10,14 @@ const screens = {
     ADVENTURE: "adventure"
 }
 
-const overlays = {
+var overlays = {
     NONE: "none",
     HELP: "help",
     SHOP: "shop"
 }
+
+var general_actions = [{id: 0, name: "Settings", unlocked: true}];
+var general_resources = [{id: 0, name: "Progress Points", count: 0, required: 1000}];
 
 
 /**
@@ -23,13 +26,13 @@ const overlays = {
  */
 function newGame()
 {  
-    var education_actions = [{id: 0, text: "action1", unlocked: true}, {id: 1, text: "action2", unlocked: false}];
     return {
         topscreen: screens.EDUCATION,
         subscreen: screens.EDUCATION.ACTIONS,
         version: curVersion,
         overlay: overlays.NONE,
-        education_actions
+        unlock_states: [general_actions, education_actions],
+        resources: [general_resources, education_resources]
     }
 }
 
@@ -64,10 +67,28 @@ function loadSaveGame(save)
 
 
 
+
+function update_state()
+{
+    update_education();
+    //if(adventure is unlocked)
+    update_adventure();
+}
+
+
+
+function game_loop()
+{
+    update_state();
+}
+
+
+
 function start_game_context()
 {
     //TODO: test for which screen the game should load in on
     load_education_screen();    
+    var loopTimer = setInterval(game_loop, 1000/tickrate);
 }
 
 
@@ -91,6 +112,7 @@ function load_game()
         //console.log(tEx);
         game = newGame();
     }
+
     init_vue();  //with the game object created, a Vue environment can be created that uses the game object as its data
 
     start_game_context();

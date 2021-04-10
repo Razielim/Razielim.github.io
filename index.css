@@ -4,22 +4,124 @@
     background-color:lightgray;
     min-width: auto;
     min-height: auto;
+    cursor: default;
+    background-repeat: no-repeat;
 }
 
 #top_pane {
     width: 960px;
     height: 50px;
     background-image: url("assets/topbar.png");
-    background-repeat: no-repeat;
     background-size: auto;
+}
+
+.left_entries {
+    float: left;
+}
+
+.center_enries {
+    float: none;
+}
+
+.right_entries {
+    float: right;
+}
+
+.centered_vertically {
+    display: flex;
+    align-items: center;
+    margin: 0px;
+    top: 50%;
+    -ms-transform: translateY(25%);
+    transform: translateY(25%);
+}
+
+.tab_active {
+    margin-top: 0px;
+    padding-top: 0px;
+    background-image: url("assets/Education/educationTabActive.png");
+    width: 26px;
+    height: 235px;
+    text-orientation: upright;
+    writing-mode: vertical-rl;
+    line-height: 1.8;
+    text-indent: 14%;
+    letter-spacing: 8px;
+}
+
+.tab_inactive {
+    margin-top: 0px;
+    padding-top: 0px;
+    background-image: url("assets/Education/educationTabInactive.png");
+    width: 26px;
+    height: 235px;
+    text-orientation: upright;
+    writing-mode: vertical-rl;
+    line-height: 1.8;
+    text-indent: 10%;
+    letter-spacing: 8px;
+    cursor: pointer;
+}
+
+#education_tabs {
+    margin-top: 0px;
+    padding-top: 0px;
+    width: 26px;
+    height: 470px;
+}
+
+#center_pane_education_left {
+    float: left;
+}
+
+#education_sidebar {
+    margin-top: 0px;
+    padding-top: 0px;
+    background-image: url("assets/sidebar.png");
+    width: 169px;
+    height: 469px;
+}
+
+#education_sidebar_pointdisplay {
+    padding-left: 20px;
+    margin-top: 0px;
+    padding-top: 0px;
+    line-height: 40px;
+    font-size: 30px;
+    letter-spacing: 2px;
+    float: left;
+}
+
+
+#education_sidebar_stressdisplay {
+    padding-top: 150px;
+    font-size: 18px;
+    text-align: center;
+}
+
+#stressdisplay {
+    padding-top: 0px;
+    background-image: url("assets/Education/stressFrame.png");
+    width: 168px;
+    height: 27px;
+    float: none;
+}
+
+#stressteddy {
+    padding-top: 0px;
+    background-image: url("assets/Education/teddy.png");
+    background-repeat: no-repeat;
+    width: 160px;
+    height: 172px;
 }
 
 #center_pane {
     width: 960px;
-    height: 540px;
+    height: 470px;
     background-image: url("assets/bg.png");
     background-repeat: no-repeat;
     background-size: auto;
+    overflow: hidden;
 }
 
 #bottom_pane {
