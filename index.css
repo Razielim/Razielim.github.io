@@ -6,6 +6,7 @@
     min-height: auto;
     cursor: default;
     background-repeat: no-repeat;
+    user-select: none;
 }
 
 #top_pane {
@@ -114,6 +115,67 @@
     width: 160px;
     height: 172px;
 }
+
+
+.education_action {
+    margin-left: 10px;
+    margin-top: 10px;
+    background-image: url("assets/Education/education_action.png");
+    width: 721px;
+    height: 37px;
+    display: flex;
+}
+
+.education_action_name {
+    margin-left: 1px;
+    margin-top: 1px;
+    width: 267px;
+    height: 35px;
+    float: left;
+}
+
+.education_action_timeleft_bar {
+    margin-left: 7px;
+    margin-top: 7px;
+    margin-right: 6px;
+    width: 225px;
+    height: 24px;
+    float: left;
+}
+
+.education_action_pointsdisplay {
+    margin-left: 1px;
+    margin-top: 1px;
+    width: 133px;
+    height: 35px;
+    float: left;
+}
+
+.education_action_automationsection {
+    margin-left: 1px;
+    margin-top: 1px;
+    width: 79px;
+    height: 35px;
+    float: left;
+}
+
+.education_upgrade {
+    margin-left: 10px;
+    margin-top: 10px;
+    background-image: url("assets/Education/education_action.png");
+    width: 721px;
+    height: 37px;
+    display: flex;
+}
+
+.education_upgrade_name {
+    margin-left: 1px;
+    margin-top: 1px;
+    width: 267px;
+    height: 35px;
+    float: left;
+}
+
 
 #center_pane {
     width: 960px;

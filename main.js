@@ -16,8 +16,9 @@ var overlays = {
     SHOP: "shop"
 }
 
-var general_actions = [{id: 0, name: "Settings", unlocked: true}];
-var general_resources = [{id: 0, name: "Progress Points", count: 0, required: 1000}];
+var general_actions = [{id: 0, text: "Settings", unlocked: true}];
+var general_resources = [{id: 0, text: "Progress Points", count: 0, required: 1000}];
+var general_upgrades = [{id: 0, text: "NYI", unlocked: false, active: false}];
 
 
 /**
@@ -32,7 +33,8 @@ function newGame()
         version: curVersion,
         overlay: overlays.NONE,
         unlock_states: [general_actions, education_actions],
-        resources: [general_resources, education_resources]
+        resources: [general_resources, education_resources],
+        upgrades: [general_upgrades, education_upgrades, education_spark_upgrades]
     }
 }
 
