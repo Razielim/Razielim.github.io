@@ -27,7 +27,7 @@ function define_education_components()
     });
     Vue.component('education_action', {
         props: ['action', 'resources'],     //if not action.available, gray out the button
-        template: `<div class="education_action" v-on:click="clickedAction(action)"> 
+        template: `<div v-on:click="clickedAction(action)" v-bind:class="{education_action: true, unavailable:action.available?false:true}"> 
             <div class="education_action_name">{{ action.text }}</div>
             <div class="education_action_timeleft_bar">{{ Math.round(action.curTime) }}/{{ action.maxTime }}</div>
             <div class="education_action_pointsdisplay"></div>
@@ -36,7 +36,7 @@ function define_education_components()
     });
     Vue.component('education_upgrade', {
         props: ['upgrade', 'resources'],     //if upgrade not affordable, gray out the button
-        template: `<div class="education_upgrade" v-on:click="clickedUpgrade(upgrade)"> 
+        template: `<div v-on:click="clickedUpgrade(upgrade)" v-bind:class="{education_upgrade: true, unavailable:upgrade.available?false:true}"> 
             <div class="education_upgrade_name">{{ upgrade.text }}</div>
         </div>`
     });

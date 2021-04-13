@@ -124,6 +124,11 @@
     width: 721px;
     height: 37px;
     display: flex;
+    transition: transform 250ms;
+    cursor: pointer;
+}
+.education_action:hover{
+    transform: scale3d(1.02, 1.02, 1.0);
 }
 
 .education_action_name {
@@ -151,6 +156,7 @@
     float: left;
 }
 
+
 .education_action_automationsection {
     margin-left: 1px;
     margin-top: 1px;
@@ -166,6 +172,10 @@
     width: 721px;
     height: 37px;
     display: flex;
+    transition: transform 250ms;
+}
+.education_upgrade:hover{
+    transform: scale3d(1.02, 1.02, 1.0);
 }
 
 .education_upgrade_name {
@@ -174,6 +184,14 @@
     width: 267px;
     height: 35px;
     float: left;
+}
+
+.unavailable {
+    cursor: default;
+    background-image: url("assets/Education/education_action_unavailable.png");
+}
+.unavailable:hover{
+    transform: none;
 }
 
 

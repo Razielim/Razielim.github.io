@@ -1,5 +1,5 @@
 var education_actions = [{id: 0, text: "Do Homework", unlocked: true, active: false, available: true, curTime: 0, maxTime: 500, hwGain: -1, bpGain: 5}, 
-                        {id: 1, text: "Go To School", unlocked: true, active: false, available: true, curTime: 0, maxTime: 5000, hwGain: 5, bpGain: 15, ppGain: 3}, 
+                        {id: 1, text: "Go To School", unlocked: true, active: false, available: false, curTime: 0, maxTime: 5000, hwGain: 5, bpGain: 15, ppGain: 3}, 
                         {id: 2, text: "Take Test", unlocked: false, active: false, available: false, curTime: 0, maxTime: 2500, bpCost: 50, ppGain: 20}, 
                         {id: 3, text: "Pursue Hobby", unlocked: false, active: false, available: true, curTime: 0, maxTime: 1500, ppGain: 5, spGain: 10}];
 
@@ -8,8 +8,8 @@ var education_resources = [{id: 0, text: "Brain Points", count: 0},
                         {id: 2, text: "Spark Points", count: 0}, 
                         {id: 3, text: "Stress", count: 0, required: 100, rate: 2, clickDecrease: 1}];
 
-var education_upgrades = [{id: 0, text: "Ask A Friend", unlocked: true, active: false, bpCost: 50},
-                        {id: 1, text: "Squeaky Teddy", unlocked: true, active: false, bpCost: 100}];
+var education_upgrades = [{id: 0, text: "Ask A Friend", unlocked: true, active: false, available: false, bpCost: 50},
+                        {id: 1, text: "Squeaky Teddy", unlocked: true, active: false, available: false, bpCost: 100}];
 
 var education_spark_upgrades = [{id: 0, text: "NYI", unlocked: false, active: false}];
 
@@ -51,6 +51,26 @@ function update_education()
     if(education_resources[3].count < education_resources[3].required)
     {
         education_resources[3].count += education_resources[3].rate/tickrate;
+    }
+
+    checkAvailabilitiesAndUnlocks();
+}
+
+
+function checkAvailabilitiesAndUnlocks()
+{
+    if(!education_actions[1].available && education_resources[1].count <= 0){ //school action possible when hw <= 0
+        education_actions[1].available = true;
+    }
+
+    for(upgrade of education_upgrades)
+    {
+        if(!upgrade.available && upgrade.bpCost <= education_resources[0].count){
+            upgrade.available = true;
+        }
+        if(upgrade.available && upgrade.bpCost > education_resources[0].count){
+            upgrade.available = false;
+        }
     }
 }
 
@@ -100,6 +120,7 @@ function handleSchoolDone(action)
     education_resources[0].count += action.bpGain;
     general_resources[0].count += action.ppGain;
     education_resources[1].count += action.hwGain;
+    education_actions[1].available = false;
 }
 
 
