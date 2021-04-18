@@ -11,7 +11,9 @@ function define_education_components()
     });
     Vue.component('stressdisplay', {
         props: ['stress'],
-        template: `<div id="stressdisplay"><point_counter_requirement v-bind:item = "stress" class="centered_vertically"></point_counter_requirement></div>`
+        template: `<div id="stressdisplay"><div style="grid-column: 1;grid-row: 1;margin-top: 2px;">
+                        <img src="assets/Education/stressFill.png" v-bind:style="{width: (stress.count/stress.required)*164 + 'px', height: 23 + 'px'}"></div>
+                    <point_counter_requirement style="grid-column: 1;grid-row: 1;" v-bind:item = "stress" class="centered_vertically"></point_counter_requirement></div>`
     });
     Vue.component('education_sidebar', {
         props: ['resources'],
@@ -25,12 +27,21 @@ function define_education_components()
             <div id="stressteddy" v-on:click="clickedStressTeddy()"></div>
             </div>`
     });
+    Vue.component('education_action_points', {
+        props: ['action'],
+        template: `<div><div class="centered_vertically" style="margin-right: 5px;" v-if="action.bpGain != 0"><img src="assets/iconpack/icon_bp.png" width="24" height="24">  {{action.bpGain}} </div>
+            <div class="centered_vertically" style="margin-right: 5px;" v-if="action.hwGain != 0"><img src="assets/iconpack/icon_hw.png" width="24" height="24">  {{action.hwGain}} </div>
+            <div class="centered_vertically" style="margin-right: 5px;" v-if="action.spGain != 0"><img src="assets/iconpack/icon_sp.png" width="24" height="24">  {{action.spGain}} </div>
+            <div class="centered_vertically" style="margin-right: 5px;" v-if="action.ppGain != 0"><img src="assets/iconpack/icon_pp.png" width="24" height="24">  {{action.ppGain}} </div>
+            </div>`
+    });
     Vue.component('education_action', {
         props: ['action', 'resources'],     //if not action.available, gray out the button
         template: `<div v-on:click="clickedAction(action)" v-bind:class="{education_action: true, unavailable:action.available?false:true}"> 
             <div class="education_action_name">{{ action.text }}</div>
-            <div class="education_action_timeleft_bar">{{ Math.round(action.curTime) }}/{{ action.maxTime }}</div>
-            <div class="education_action_pointsdisplay"></div>
+            <div class="education_action_timeleft_bar"><div style="grid-column: 1;grid-row: 1;"><img src="assets/Education/stressFill.png" v-bind:style="{width: (action.curTime/action.maxTime)*225 + 'px', height: 24 + 'px'}"></div>
+            <div style="grid-column: 1;grid-row: 1;">{{ Math.round(action.curTime) }}/{{ action.maxTime }}</div></div>
+            <education_action_points class="education_action_pointsdisplay" v-bind:action="action"></education_action_points>
             <div class="education_action_automationsection">Automate</div>
         </div>`
     });
@@ -38,6 +49,7 @@ function define_education_components()
         props: ['upgrade', 'resources'],     //if upgrade not affordable, gray out the button
         template: `<div v-on:click="clickedUpgrade(upgrade)" v-bind:class="{education_upgrade: true, unavailable:upgrade.available?false:true}"> 
             <div class="education_upgrade_name">{{ upgrade.text }}</div>
+            <div class="centered_vertically" style="margin-right: 5px;"><img src="assets/iconpack/icon_bp.png" width="28" height="28">  {{upgrade.bpCost}} </div>
         </div>`
     });
 }
