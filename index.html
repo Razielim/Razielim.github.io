@@ -1,79 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="index.css">
         <meta charset="UTF-8">
-        <script src="vue.min.js"></script>
-        <script defer src="vue_init.js"></script>
         <script defer src="main.js"></script>
-        <script defer src="education.js"></script>
-        <script defer src="adventure.js"></script>
     </head>
-
-
-    <body onload="load_game()">
-        <div id="app">
-            <div id="game_container">
-                <div id="top_pane">
-                    <!--information pane and screen select-->
-                    <top_pane_holder id="top_pane_holder"></top_pane_holder>
-                </div>
-                <div id="center_pane">
-
-
-
-                    <div v-if="game.topscreen == screens.EDUCATION" id="screen_education">
-                        <div id="center_pane_education">
-                            <div id="center_pane_education_tabs" class="left_entries">
-                                <!--there are two tab graphics stacked vertically here-->
-                                <education_tabs id="education_tabs" v-bind:subscreen = "game.subscreen"></education_tabs>
-                            </div>
-
-                            <div id="center_pane_education_left" class="center_entries">
-                                <!--education screen left side (actions/upgrades)-->
-                                <div v-if="game.subscreen == screens.EDUCATION.ACTIONS" id="screen_education_actions">
-                                    <div> <!--pass on variables of the game object into this component template-->
-                                        <education_action  v-for="action in game.unlock_states[1]" v-if="action.unlocked"  
-                                                    v-bind:action = "action" v-bind:key = "action.id" v-bind:resources="game.resources[1]"></education_action>   
-                                    </div>
-                                </div>
-                                <div v-if="game.subscreen == screens.EDUCATION.UPGRADES" id="screen_education_upgrades">
-                                    <div>
-                                        <education_upgrade v-for="upgrade in game.upgrades[1]" v-if="upgrade.unlocked"
-                                                    v-bind:upgrade = "upgrade" v-bind:key = "upgrade.id" v-bind:resources="game.resources[1]"></education_upgrade>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="center_pane_education_right" class="right_entries">
-                                <!--education screen right side (resource overview)-->
-                                <education_sidebar v-bind:resources = "game.resources[1]"></education_sidebar>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <div v-if="game.topscreen == screens.ADVENTURE" id="screen_adventure">
-                        <div id="center_pane_adventure">
-                            <table>
-                                <td id="center_pane_adventure_left">
-                                    <!--adventure screen left side (upgrades)-->
-                                    Left Center
-                                </td>
-                                <td id="center_pane_adventure_left">
-                                    <!--adventure screen right side (resource overview)-->
-                                    Right Center
-                                </td>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div id="bottom_pane">
-                    <!--shop and links-->
-                    Bottom
-                </div>
-            </div>
-        </div>
-    </body>
 </html>
